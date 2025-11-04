@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>그린넥스트 | 청소년이 만드는 푸른 변화</title>
+<style>
+  body { margin:0; font-family: Arial, sans-serif; line-height:1.6; }
+  header { position:fixed; top:0; width:100%; background:#2a7da5; color:#fff; padding:10px; text-align:center; }
+  header a { color:#fff; margin:0 10px; text-decoration:none; font-weight:bold; }
+  section { padding:80px 20px 60px; max-width:900px; margin:auto; }
+  h2 { color:#1e8a59; }
+  .btn { display:inline-block; padding:8px 14px; background:#1e8a59; color:#fff; text-decoration:none; border-radius:6px; margin-top:10px; }
+  .diary-item { background:#eaf7ef; padding:8px; border-radius:6px; margin:6px 0; }
+  input, textarea { width:100%; padding:8px; margin:4px 0 10px; border:1px solid #ccc; border-radius:6px; }
+  footer { text-align:center; padding:20px; color:#555; background:#f0f0f0; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#home">소개</a>
+  <a href="#activity">핵심활동</a>
+  <a href="#join">참여</a>
+  <a href="#news">뉴스</a>
+  <a href="#contact">후원/문의</a>
+</header>
+
+<section id="home">
+  <h2>그린넥스트</h2>
+  <p><strong>청소년이 만드는 푸른 변화</strong></p>
+  <p>그린넥스트는 고등학생이 만든 생태·환경 비영리 재단입니다.  
+     학교 안에서 기후 행동을 실천하고 변화를 만들어갑니다.</p>
+</section>
+
+<section id="activity">
+  <h2>핵심활동 — 탄소 다이어리</h2>
+  <p>일상 속 탄소 줄이기 실천을 기록해보세요!</p>
+
+  <input id="act" placeholder="실천 내용 (예: 텀블러 사용)">
+  <input id="pt" type="number" placeholder="포인트 (예: 5)">
+  <button class="btn" onclick="add()">기록 추가</button>
+
+  <div id="list"></div>
+  <p><strong>총 포인트:</strong> <span id="sum">0</span></p>
+</section>
+
+<section id="join">
+  <h2>캠페인 참여</h2>
+  <p>학교 탄소 감축 챌린지에 참여해보세요!</p>
+  <input id="school" placeholder="학교명">
+  <button class="btn" onclick="alert('신청 완료!')">신청하기</button>
+</section>
+
+<section id="news">
+  <h2>뉴스 · 스토리</h2>
+  <p>✨ 학생들이 만든 환경 변화 이야기</p>
+  <ul>
+    <li>서울고 텀블러 캠페인 성공!</li>
+    <li>잔반 줄이기 도전, 한 달간 20% 감소</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>후원 · 문의</h2>
+  <p>이메일: greennext@example.org</p>
+</section>
+
+<footer>
+  © 2025 GreenNext — 학생이 만든 기후 행동 재단
+</footer>
+
+<script>
+let sum=0;
+function add(){
+  const a=document.getElementById("act").value;
+  const p=parseInt(document.getElementById("pt").value||0);
+  if(!a||p<=0) return;
+  sum+=p;
+  const div=document.createElement("div");
+  div.className="diary-item";
+  div.textContent=`${a} +${p}pt`;
+  document.getElementById("list").appendChild(div);
+  document.getElementById("sum").textContent=sum;
+  document.getElementById("act").value="";
+  document.getElementById("pt").value="";
+}
+</script>
+
+</body>
+</html>
